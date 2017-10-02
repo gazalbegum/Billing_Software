@@ -82,15 +82,13 @@
     /* edit function */
 	
 	'${list.customerId}','${list.customerName}','${list.customerAddress}','${list.customerPhone}','${list.customerEmailId}', '${list.customerPaymentMode}','${list.customerCompanyName}'
-	function editFunction(customerId, customerName, provisionID, customerAddress, customerPhone,
-			customerEmailId, customerPaymentMode, customerCompanyName) {
+	function editFunction(customerId, customerName, customerGstIn, customerAddress, customerPhone,
+			customerEmailId) {
 		$('#customer_name').val(customerName);
-	    $('#customer_provisional_id').val(provisionID);
+	    $('#customer_gst_in').val(customerGstIn);
 		$('#customer_phone').val(customerPhone);
 		$('#customer_email_id').val(customerEmailId);
-		$('#customer_payment_mode').val(customerPaymentMode);
 		$('#customer_address').val(customerAddress);
-		$('#customer_company_name').val(customerCompanyName);	
 		$('#customer_id').val(customerId);
 	}
 
@@ -203,11 +201,10 @@
                    
                    <th><input type="checkbox" id="checkall" /></th>
                    <th>Customer Name</th>
-                   <th>Provision Id</th>
+                   <th>Customer GST</th>
                    <th>Address</th>
                    <th>Phone</th>
                    <th>Email</th>
-                   <th>Payment Mode</th>
                    <th>Company Name</th>
                    <th>Edit</th>                      
                    <th>Delete</th>
@@ -218,13 +215,11 @@
      <tr>
          <td><input type="checkbox" class="checkthis" /></td>
          <td>${list.customerName}</td>
-         <td>${list.provisionID}</td>
+         <td>${list.customerGstIn}</td>
          <td>${list.customerAddress}</td>
          <td>${list.customerPhone}</td>
          <td>${list.customerEmailId}</td>
-         <td>${list.customerPaymentMode}</td>
-         <td>${list.customerCompanyName}</td>       
-         <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick="editFunction('${list.customerId}','${list.customerName}','${list.provisionID}','${list.customerAddress}','${list.customerPhone}','${list.customerEmailId}', '${list.customerPaymentMode}','${list.customerCompanyName}')"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+         <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick="editFunction('${list.customerId}','${list.customerName}','${list.customerGstIn}','${list.customerAddress}','${list.customerPhone}','${list.customerEmailId}')"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
          <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash" onclick="deletefunctionTest('${list.customerId}')"></span></button></p></td>     </tr>
     </c:forEach>
      
@@ -269,8 +264,8 @@
                         </div>							
                         
  						<div class="form-group"> 
- 						     <label>Provision Number</label>      
-       						 <input class="form-control " id = "customer_provisional_id"	name="customer_provisional_id" type="text" >
+ 						     <label>Customer GST</label>      
+       						 <input class="form-control " id = "customer_gst_in"	name="customer_gst_in" type="text" >
                         </div>	
                         
                         <div class="form-group">       
@@ -288,17 +283,7 @@
        						 <input class="form-control " id = "customer_address"	name="customer_address" type="text">
                         </div>	
                         
-  						<div class="form-group">    
-  						      <label>Payment Mode</label>   
-       						 <input class="form-control " id = "customer_payment_mode"	name="customer_payment_mode" type="text" >
-                        </div>	
-                        
-                        <div class="form-group">    
-  						      <label>Company Name</label>   
-       						 <input class="form-control " id = "customer_company_name"	name="customer_company_name" type="text">
-                        </div>	
-                        
-                        <div class="form-group">       
+  						<div class="form-group">       
 						     <input class="form-control " id = "customer_id"	name="customer_id" type="hidden" >
                         </div>
                       </form>
@@ -329,8 +314,8 @@
                         </div>
       </div>
         <div class="modal-footer ">
-        <button id = "delete-yes" type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+        <button id = "delete-yes" type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>No</button>
       </div>
         </div>
     <!-- /.modal-content --> 

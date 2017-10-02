@@ -55,3 +55,13 @@ insert into PRODUCT1 VALUES (3,"LAPTOP",30000);
 insert into PRODUCT1 VALUES (4,"IPHONE 7",50000);
 
 commit;
+
+
+// new columns added
+alter table invoice add column challan_number int;
+
+alter table invoice add column purchase_order int;
+
+alter table customers drop column customer_company_name;
+
+ALTER TABLE `customers` CHANGE COLUMN `customer_provisional_id` `customer_gst_in` VARCHAR(255);

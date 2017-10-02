@@ -42,6 +42,7 @@
 	       
 
 	       var net_price = (total_price) + after_SGST + after_CGST;
+	       Math.round(net_price * 100) /100
 	       if (!isNaN(net_price)) {
 	           document.getElementById('net_price').value = net_price;
 	       }
@@ -118,6 +119,16 @@
 		                    
 		                }
 		            },
+		            customer_payment_mode: {
+		                validators: {
+		                     stringLength: {
+		                        min: 4,
+		                    },
+		                    notEmpty: {
+		                        message: 'Add payment mode'
+		                    }
+		                }
+		            },
 		            unit_price: {
 		                validators: {
 		                     stringLength: {
@@ -139,9 +150,9 @@
 		            }
 		        })
 		        .on('success.form.bv', function(e) {
-		            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-		               
+		            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...	          
 		           
+		         
 		            // Prevent form submission
 		            e.preventDefault();
 
@@ -156,13 +167,10 @@
 		                console.log(result);
 		            }, 'json');
 		            
-		            $( '#billing_form' ).each(function(){
-		                this.reset();
-		            });
+		           // $('#billing_form').find('#product_name', '#product_hsn_bac','#product_cgst','#product_sgst', '#product_quantity','#unit_price','#net_price').val('');
 		            
-		            $('#billing_form').click(function() {
-		                location.reload(true);
-		            });
+		           $('#billing_form').find('input, select').not("#order_date,#customer_payment_mode,#customer_id,#purchase_order,#challan_number").val('');
+		            console.log("reset done");
 		        });
 		});
 
@@ -392,6 +400,32 @@ $(document).ready(function(){
   </div>
 </div>
 -->
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Purchase Order</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+  <input name="purchase_order" id="purchase_order" placeholder="Purchase Order" class="form-control"  type="text">
+    </div>
+</div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Challan No.</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+  <input name="challan_number" id="challan_number" placeholder="Challan No." class="form-control"  type="text">
+    </div>
+</div>
+</div>
+
+
 <!-- select customer ddb -->
 <div class="form-group"> 
   <label class="col-md-4 control-label">Customer Name</label>
@@ -460,6 +494,23 @@ $(document).ready(function(){
 </div>
 
 <!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Payment Mode</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+         <select name="customer_payment_mode" id= "customer_payment_mode" class="form-control selectpicker" >
+          <option value="By RTGS" >By RTGS</option>
+        <option value="By NEFT" >By NEFT</option>
+         <option value="By cheque" >By cheque</option>
+          <option value="By cash" >By cash</option>
+      </select>
+    </div>
+</div>
+</div>
+
+<!-- Text input-->
       
 <div class="form-group">
   <label class="col-md-4 control-label">SGST</label>  
@@ -470,6 +521,7 @@ $(document).ready(function(){
     </div>
   </div>
 </div>
+
 
 
 <!-- Text input-->
@@ -491,7 +543,7 @@ $(document).ready(function(){
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-  <input name="product_quantity" id="product_quantity" placeholder="Quantity" class="form-control"  type="text" onkeyup="calculate_net_price()">
+  <input name="product_quantity" id="product_quantity" placeholder="Quantity" class="form-control"  type="text">
     </div>
 </div>
 </div>
@@ -524,7 +576,7 @@ $(document).ready(function(){
    <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-  <input name="order_date" placeholder="Order Date" class="form-control" type="date">
+  <input name="order_date" id = "order_date" placeholder="Order Date" class="form-control" type="date">
     </div>
   </div>
 </div>
@@ -540,7 +592,7 @@ $(document).ready(function(){
 <div class="form-group" align="center">
   <label class="col-md-4 control-label"></label>
   <div class="col-md-4">
-    <button type="submit" class="btn btn-warning" >Add Product <span class="glyphicon glyphicon-send"></span></button>
+    <button type="submit" class="btn btn-warning" >Add Product For Invoice <span class="glyphicon glyphicon-send"></span></button>
   </div>
 </div>
 </td>

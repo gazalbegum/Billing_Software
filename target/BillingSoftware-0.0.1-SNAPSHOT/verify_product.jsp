@@ -45,7 +45,11 @@
 	       if (!isNaN(net_price)) {
 	           document.getElementById('product_rate').value = net_price;
 	           document.getElementById('total_price').value = total_price;
+	           
+	           Math.round(after_SGST * 100) / 100;
 	           document.getElementById('price_post_sgst').value = after_SGST;
+	           
+	           Math.round(after_CGST * 100) / 100;
 	           document.getElementById('price_post_cgst').value = after_CGST;
 	       }
 	   }
@@ -112,15 +116,22 @@
 	'${list.productName}', '${list.hsnBac}', '${list.productPrice}',
 			'${list.productGst}', '${list.priceAfterGst}',
 			'${list.productQuantity}', '${list.productRate}'
-	function editFunction(invoice_id, productName, hsnBac, productPrice,
+	function editFunction(invoice_id, purchaseOrder, challanNumber, productName, hsnBac, productPrice, customerPaymentMode,
 			productSGST, productCGST, productQuantity, productRate) {
+				$('#purchase_order').val(purchaseOrder);
+				$('#challan_number').val(challanNumber);
 		$('#product_name').val(productName);
 		$('#hsn_bac').val(hsnBac);
+		$('#customer_payment_mode').val(customerPaymentMode);
 		$('#product_price').val(productPrice);
 		$('#product_sgst').val(productSGST);
-		$('#price_post_sgst').val(productSGST / 100 * productQuantity * productPrice);
+		aftersgst = productSGST / 100 * productQuantity * productPrice;
+		
+		$('#price_post_sgst').val(Math.round(aftersgst * 100) / 100);
 		$('#product_cgst').val(productCGST);	
-		$('#price_post_cgst').val(productCGST / 100 * productQuantity * productPrice);
+		aftercgst = productCGST / 100 * productQuantity * productPrice;
+		
+		$('#price_post_cgst').val(Math.round(aftercgst * 100 ) / 100);
 		$('#product_quantity').val(productQuantity);
 		$('#total_price').val(productQuantity * productPrice);
 		$('#product_rate').val(productRate);
@@ -235,11 +246,14 @@
                    <thead>
                    
                    <th><input type="checkbox" id="checkall" /></th>
+                   <th>Purchase Order</th>
+                   <th>Challan No.</th>
                    <th>Product Name</th>
                    <th>HSN / BAC</th>
                    <th>Unit Price</th>
                    <th>Quantity</th>
                    <th>Total Price</th>
+                   <th>Payment Mode</th>
                    <th>CGST</th>
                    <th>CGST Price</th>
                    <th>SGST</th>
@@ -253,18 +267,20 @@
     <c:forEach items="${invoiceBeans}" var="list">
      <tr>
          <td><input type="checkbox" class="checkthis" /></td>
-       
+         <td>${list.purchaseOrder}</td>
+         <td>${list.challanNumber}</td>
          <td>${list.productName}</td>
          <td>${list.hsnBac}</td>
          <td>${list.productPrice}</td>   
           <td>${list.productQuantity}</td>
          <td>${list.totalPrice}</td>     
+         <td>${list.customerPaymentMode}</td>  
          <td>${list.productCGST}%</td>
          <td>${list.priceAfterCGST}</td>   
          <td>${list.productSGST}%</td>
          <td>${list.priceAfterSGST}</td>            
          <td>${list.productRate}</td>
- 		 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick="editFunction('${list.invoiceId}','${list.productName}','${list.hsnBac}','${list.productPrice}','${list.productSGST}', '${list.productCGST}','${list.productQuantity}','${list.productRate}')"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+ 		 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick="editFunction('${list.invoiceId}','${list.purchaseOrder}','${list.challanNumber}','${list.productName}','${list.hsnBac}','${list.productPrice}','${list.customerPaymentMode}','${list.productSGST}', '${list.productCGST}','${list.productQuantity}','${list.productRate}')"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
          <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash" onclick="deletefunctionTest('${list.invoiceId}')"></span></button></p></td>     </tr>
     </c:forEach>
      
@@ -303,6 +319,18 @@
       </div>
           <div class="modal-body">
           <form  action="updateProductForBilling" method="post"  id="billing_form">
+						
+						<div class="form-group">    
+						     <label>Purchase Order</label>   
+       						 <input class="form-control " id = "purchase_order"	name="purchase_order" type="text" >
+                        </div>							
+                        
+                        <div class="form-group">    
+						     <label>Challan Number</label>   
+       						 <input class="form-control " id = "challan_number"	name="challan_number" type="text" >
+                        </div>							
+                        
+						
 						<div class="form-group">    
 						     <label>Product Name</label>   
        						 <input class="form-control " id = "product_name"	name="product_name" type="text" readonly>
@@ -311,6 +339,11 @@
  						<div class="form-group"> 
  						     <label>HSN/BAC</label>      
        						 <input class="form-control " id = "hsn_bac"	name="hsn_bac" type="text" >
+                        </div>	
+                        
+                        <div class="form-group">    
+  						      <label>Payment Mode</label>   
+       						 <input class="form-control " id = "customer_payment_mode"	name="customer_payment_mode" type="text" >
                         </div>	
                         
                         <div class="form-group">       
@@ -353,6 +386,7 @@
        						 <input class="form-control " id = "product_rate"	name="product_rate" type="text" readonly>
                         </div>
 						
+						
 						<div class="form-group">       
 						     <input class="form-control " id = "invoice_id"	name="invoice_id" type="hidden" >
                         </div>
@@ -384,8 +418,8 @@
                         </div>
       </div>
         <div class="modal-footer ">
-        <button id = "delete-yes" type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+        <button id = "delete-yes" type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>No</button>
       </div>
         </div>
     <!-- /.modal-content --> 

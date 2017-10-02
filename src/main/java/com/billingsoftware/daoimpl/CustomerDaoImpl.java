@@ -24,17 +24,15 @@ public class CustomerDaoImpl implements CustomerDao {
 		Session session = sessionFactory.openSession();
 	
 		
-		String hql = "update Customer set customerName = :customer_name, provisionID = :customer_provisional_id,customerAddress = :customer_address ,customerPhone = :customer_phone ,customerEmailId = :customer_email_id ,customerPaymentMode = :customer_payment_mode ,customerCompanyName = :customer_company_name where customerId = :customer_id";
+		String hql = "update Customer set customerName = :customer_name, customerGstIn = :customer_gst_in,customerAddress = :customer_address ,customerPhone = :customer_phone ,customerEmailId = :customer_email_id  where customerId = :customer_id";
 
 		
 		Query query = session.createQuery(hql);
 		query.setParameter("customer_name", customer.getCustomerName());
-		query.setParameter("customer_provisional_id", customer.getProvisionID());
+		query.setParameter("customer_gst_in", customer.getcustomerGstIn());
 		query.setParameter("customer_address", customer.getCustomerAddress());
 		query.setParameter("customer_phone", customer.getCustomerPhone());
 		query.setParameter("customer_email_id", customer.getCustomerEmailId());
-		query.setParameter("customer_payment_mode", customer.getCustomerPaymentMode());
-		query.setParameter("customer_company_name", customer.getCustomerCompanyName());
 		query.setParameter("customer_id", customer.getCustomerId());
 		
 		int rowsAffected = query.executeUpdate();

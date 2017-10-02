@@ -1,6 +1,5 @@
 package com.billingsoftware.utils;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +34,13 @@ public class BeanUtil {
 			invoiceBean.setProductRate(CommonUtils.convertToTwoDecimalPlaces(tempInvoice.getProductRate()));
             invoiceBean.setCustomerId(tempInvoice.getCustomerId());
             invoiceBean.setInvoiceNumber(tempInvoice.getInvoiceNumber());
-            invoiceBean.setOrderDate(tempInvoice.getOrderDate());
             
+            // added 2 new fields
+            invoiceBean.setChallanNumber(tempInvoice.getChallanNumber());
+            invoiceBean.setPurchaseOrder(tempInvoice.getPurchaseOrder());
+            
+            invoiceBean.setOrderDate(tempInvoice.getOrderDate());
+            invoiceBean.setCustomerPaymentMode(tempInvoice.getCustomerPaymentMode());
             // calculate for bill extra fields
             invoiceBean.setTotalPrice(CommonUtils.convertToTwoDecimalPlaces(tempInvoice.getProductPrice() * tempInvoice.getProductQuantity()));
             invoiceBean.setPriceAfterCGST(CommonUtils.convertToTwoDecimalPlaces((Double.parseDouble(tempInvoice.getProductCGST()) / 100) * tempInvoice.getProductPrice() * tempInvoice.getProductQuantity()));
@@ -58,12 +62,10 @@ public class BeanUtil {
 		Customer customer = new Customer();
 		
 		customer.setCustomerAddress(customerBean.getCustomerAddress());
-		customer.setCustomerCompanyName(customerBean.getCustomerCompanyName());
-		customer.setProvisionID(customerBean.getProvisionID());
+		customer.setcustomerGstIn(customerBean.getcustomerGstIn());
 		customer.setCustomerEmailId(customerBean.getCustomerEmailId());
 		customer.setCustomerId(customerBean.getCustomerId());
 		customer.setCustomerName(customerBean.getCustomerName());
-		customer.setCustomerPaymentMode(customerBean.getCustomerPaymentMode());
 		customer.setCustomerPhone(customerBean.getCustomerPhone());
 		
 		return customer;
@@ -81,12 +83,10 @@ public class BeanUtil {
 			customerBean = new CustomerBean();
 			
 			customerBean.setCustomerAddress(tempCustomer.getCustomerAddress());
-			customerBean.setCustomerCompanyName(tempCustomer.getCustomerCompanyName());
-			customerBean.setProvisionID(tempCustomer.getProvisionID());
+			customerBean.setcustomerGstIn(tempCustomer.getcustomerGstIn());
 			customerBean.setCustomerEmailId(tempCustomer.getCustomerEmailId());
 			customerBean.setCustomerId(tempCustomer.getCustomerId());
 			customerBean.setCustomerName(tempCustomer.getCustomerName());
-			customerBean.setCustomerPaymentMode(tempCustomer.getCustomerPaymentMode());
 			customerBean.setCustomerPhone(tempCustomer.getCustomerPhone());
 			
 			customerBeans.add(customerBean);
@@ -111,6 +111,12 @@ public class BeanUtil {
 		invoice.setProductQuantity(invoiceBean.getProductQuantity());
 		invoice.setProductRate(Double.parseDouble(invoiceBean.getProductRate()));
 		invoice.setOrderDate(invoiceBean.getOrderDate());
+		invoice.setCustomerPaymentMode(invoiceBean.getCustomerPaymentMode());
+		
+		// new fields added
+		invoice.setChallanNumber(invoiceBean.getChallanNumber());
+		invoice.setPurchaseOrder(invoiceBean.getPurchaseOrder());
+		invoice.setInvoiceNumber(invoiceBean.getInvoiceNumber());
 		return invoice;
 	}
 
@@ -150,6 +156,12 @@ public class BeanUtil {
 		    invoice.setProductQuantity(tempInvoiceBean.getProductQuantity());
 		    invoice.setProductRate(Double.parseDouble(tempInvoiceBean.getProductRate()));
 		    invoice.setOrderDate(tempInvoiceBean.getOrderDate());
+		    invoice.setCustomerPaymentMode(tempInvoiceBean.getCustomerPaymentMode());
+		    
+		    // added 2 new fields 
+		    invoice.setChallanNumber(tempInvoiceBean.getChallanNumber());
+		    invoice.setPurchaseOrder(tempInvoiceBean.getPurchaseOrder());
+		    
 		    invoices.add(invoice);
 		    
 		}
@@ -164,12 +176,10 @@ public class BeanUtil {
 		CustomerBean customerBean = new CustomerBean();
 		
 		customerBean.setCustomerAddress(customer.getCustomerAddress());
-		customerBean.setCustomerCompanyName(customer.getCustomerCompanyName());
 		customerBean.setCustomerEmailId(customer.getCustomerEmailId());
 		customerBean.setCustomerId(customer.getCustomerId());
 		customerBean.setCustomerName(customer.getCustomerName());
-		customerBean.setProvisionID(customer.getProvisionID());
-		customerBean.setCustomerPaymentMode(customer.getCustomerPaymentMode());
+		customerBean.setcustomerGstIn(customer.getcustomerGstIn());
 		customerBean.setCustomerPhone(customer.getCustomerPhone());
 		
 		return customerBean;

@@ -31,6 +31,20 @@ public class CommonUtils {
 		return new SimpleDateFormat(toFormat).format(date);
 	}
 	
+	public static Date convertToFormatDDMMYYYYDate(String dateString){
+		String toFormat = "dd/MM/yyyy";
+		String fromFormat = "dd/MM/yyyy";
+		DateFormat formatter = new SimpleDateFormat(fromFormat); 
+		Date date = null;
+		try {
+			date = (Date)formatter.parse(dateString);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return date;	
+	}
+	
     public static String convertToTwoDecimalPlaces(double tempNumber){
     	return decimalFormat.format(tempNumber);
     }

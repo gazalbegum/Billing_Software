@@ -30,7 +30,10 @@ public class BeanHelper {
 		String customerId = "";
 		String invoiceNumber = "";
 		String orderDate = "";
-
+        String customerPaymentMode = "";
+        String challanNumber = "";
+        String purchaseOrder = "";
+		
 		double sgstCounter = 0.0;
 		double cgstCounter = 0.0;
 		double netPrice = 0.0;
@@ -41,6 +44,8 @@ public class BeanHelper {
 			customerId = tempInvoiceBean.getCustomerId().toString();
 			invoiceNumber = tempInvoiceBean.getInvoiceNumber();
 			orderDate = tempInvoiceBean.getOrderDate() == null ? "" : tempInvoiceBean.getOrderDate().toString();
+			challanNumber = tempInvoiceBean.getChallanNumber();
+			purchaseOrder = tempInvoiceBean.getPurchaseOrder();
 			break;
 		}
 		
@@ -55,6 +60,7 @@ public class BeanHelper {
 			cgstCounter = cgstCounter + ((productPriceDouble  * (  Double.parseDouble(tempInvoiceBean.getProductCGST()) / 100))* tempInvoiceBean.getProductQuantity());
 			netPrice = netPrice + productRateDouble;
 			totalPrice = totalPrice + (productPriceDouble * tempInvoiceBean.getProductQuantity());
+			customerPaymentMode = tempInvoiceBean.getCustomerPaymentMode();
 			System.out.println("sgstCounter" + sgstCounter);
 		}
 		
@@ -67,8 +73,12 @@ public class BeanHelper {
 		finalInvoiceBean.setTotalCGST(CommonUtils.convertToTwoDecimalPlaces(cgstCounter));
 		finalInvoiceBean.setTotalSGST(CommonUtils.convertToTwoDecimalPlaces(sgstCounter));
 		finalInvoiceBean.setNetPrice(CommonUtils.convertToTwoDecimalPlaces(netPrice));
-        finalInvoiceBean.setTotalPrice(CommonUtils.convertToTwoDecimalPlaces(totalPrice));
-
+        finalInvoiceBean.setTotalPrice(CommonUtils.convertToTwoDecimalPlaces(totalPrice));          
+        finalInvoiceBean.setAmountInWords(EnglishNumberToWords.wrapAmount(finalInvoiceBean.getNetPrice()));
+        finalInvoiceBean.setCustomerPaymentMode(customerPaymentMode);
+        
+        finalInvoiceBean.setChallanNumber(challanNumber);
+        finalInvoiceBean.setPurchaseOrder(purchaseOrder);
         return finalInvoiceBean;
 	
 	}

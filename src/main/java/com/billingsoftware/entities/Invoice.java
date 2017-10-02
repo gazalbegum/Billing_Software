@@ -45,6 +45,15 @@ public class Invoice {
 
 	@Column(name = "order_date")
 	private String orderDate;
+	
+	@Column(name = "customer_payment_mode")
+	private String customerPaymentMode;
+	
+	@Column(name = "challan_number")
+	private String challanNumber;
+	
+	@Column(name = "purchase_order")
+	private String purchaseOrder;
 
 	public Invoice() {
 
@@ -137,5 +146,31 @@ public class Invoice {
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
+
+	public String getCustomerPaymentMode() {
+		return customerPaymentMode;
+	}
+
+	public void setCustomerPaymentMode(String customerPaymentMode) {
+		this.customerPaymentMode = customerPaymentMode;
+	}
+
+	public String getChallanNumber() {
+		return challanNumber;
+	}
+
+	public void setChallanNumber(String challanNumber) {
+		this.challanNumber = challanNumber;
+	}
+
+	public String getPurchaseOrder() {
+		return purchaseOrder;
+	}
+
+	public void setPurchaseOrder(String purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
+	}
+	
+	
 
 }

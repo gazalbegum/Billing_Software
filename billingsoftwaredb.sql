@@ -87,5 +87,7 @@ CREATE TABLE `products` (
 
 alter table customers add customer_provisional_id varchar(255);
 
+alter table customers drop column customer_payment_mode;
 
+alter table invoice add customer_payment_mode varchar(255);
 

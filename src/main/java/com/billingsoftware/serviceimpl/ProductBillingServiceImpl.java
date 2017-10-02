@@ -44,6 +44,7 @@ public class ProductBillingServiceImpl implements ProductBillingService{
 	public void editProduct(InvoiceBean invoiceBean) {
 		// TODO Auto-generated method stub
 		Invoice invoice = BeanUtil.setInvoiceBeanToEntity(invoiceBean);
+		System.out.println("Updated Invoice :" +invoice);
 		productBillingDao.editProduct(invoice);
 	}
 

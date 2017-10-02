@@ -1,6 +1,8 @@
 package com.billingsoftware.controller;
 
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +21,7 @@ import com.billingsoftware.helpers.BeanHelper;
 import com.billingsoftware.service.CustomerService;
 import com.billingsoftware.service.ProductBillingService;
 import com.billingsoftware.service.ProductService;
+import com.billingsoftware.utils.CommonUtils;
 import com.billingsoftware.utils.RequestUtil;
 
 @Controller("/billingInvoice")
@@ -52,7 +55,31 @@ public class BillingInvoiceController {
 	public String getBillingHistory(ModelMap model){	
 		
 		List<BillingHistoryBean> billingHistoryBeans = productBillingService.getBillingHistory();  
-		Collections.reverse(billingHistoryBeans);
+		Collections.sort(billingHistoryBeans, new Comparator<BillingHistoryBean>() {
+
+			@Override
+			public int compare(BillingHistoryBean bean1, BillingHistoryBean bean2) {
+				// TODO Auto-generated method stub
+				
+				String dateString1 = bean1.getOrderDate();
+				String dateString2 = bean2.getOrderDate();
+				
+				Date dateBean1 = CommonUtils.convertToFormatDDMMYYYYDate(dateString1);
+				Date dateBean2 = CommonUtils.convertToFormatDDMMYYYYDate(dateString2);
+				
+				return dateBean1.compareTo(dateBean2);
+				
+//				String [] strArr_1 = bean1.getInvoiceNumber().split("-");
+//				int number_1 = Integer.parseInt(strArr_1[1]);
+//				
+//				String [] strArr_2 = bean1.getInvoiceNumber().split("-");
+//				int number_2 = Integer.parseInt(strArr_2[1]);
+//				
+//				return number_1 - number_2;
+			}
+			
+			
+		});
 		model.addAttribute("billingHistoryBeans", billingHistoryBeans);	
 		return "billing_history";
 	}
@@ -65,7 +92,7 @@ public class BillingInvoiceController {
         FinalInvoiceBean finalInvoiceBean = beanHelper.getDataForFinalInvoiceBean(invoiceBeans);
        	model.addAttribute("invoiceBeans", invoiceBeans);
 		model.addAttribute("finalInvoiceBean", finalInvoiceBean);	
-		return "invoice";
+		return "invoice_1";
 	}	
 
 	@RequestMapping(value = "/addProductForBilling")
@@ -102,7 +129,25 @@ public class BillingInvoiceController {
 		return productMap;
 	}
 	
-	
+//	@RequestMapping(value = "/getBillingHistory")
+//	public String getBillingHistory(ModelMap model){
+//		
+//		String screenShot = formCollection["capturedShot"];
+//		//remove the image header details
+//		String trimmedData = screenShot.Replace("data:image/png;base64,","");
+//
+//		//convert the base 64 string image to byte array
+//		byte[] uploadedImage=Convert.FromBase64String(trimmedData);
+//
+//		//the byte array can be saved into database or on file system
+//		//saving the image on the server
+//		String fileName=Guid.NewGuid()+".png";
+//		String path=Server.MapPath("~/App_Data/"+fileName);
+//		System.IO.File.WriteAllBytes(path,uploadedImage);
+//		
+//		
+//		return null;
+//	}
 	
 }
 

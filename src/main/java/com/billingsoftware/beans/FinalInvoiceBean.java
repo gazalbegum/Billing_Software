@@ -16,6 +16,14 @@ public class FinalInvoiceBean {
 	private String netPrice;
 	
 	private String totalPrice;
+	
+	private String customerPaymentMode;
+	
+	private String amountInWords;
+	
+	private String challanNumber;
+	
+	private String purchaseOrder;
 
 	public String getInvoiceNumber() {
 		return invoiceNumber;
@@ -73,6 +81,37 @@ public class FinalInvoiceBean {
 		this.totalPrice = totalPrice;
 	}
 
-		
+	public String getAmountInWords() {
+		return amountInWords;
+	}
+
+	public void setAmountInWords(String amountInWords) {
+		this.amountInWords = amountInWords;
+	}
+
+	public String getCustomerPaymentMode() {
+		return customerPaymentMode;
+	}
+
+	public void setCustomerPaymentMode(String customerPaymentMode) {
+		this.customerPaymentMode = customerPaymentMode;
+	}
+
+	public String getChallanNumber() {
+		return challanNumber;
+	}
+
+	public void setChallanNumber(String challanNumber) {
+		this.challanNumber = challanNumber;
+	}
+
+	public String getPurchaseOrder() {
+		return purchaseOrder;
+	}
+
+	public void setPurchaseOrder(String purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
+	}		
+	
 	
 }

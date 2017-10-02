@@ -22,7 +22,7 @@ public class CustomerController {
 	@RequestMapping(value = "/addCustomer")
 	public String addCustomer(ModelMap model, HttpServletRequest request){
 		
-		CustomerBean customerBean = RequestUtil.setCustomerRequestToBean(request);
+		CustomerBean customerBean = RequestUtil.setCustomerRequestToBean(request,"add");
 		
 		customerService.addCustomer(customerBean);
 		
@@ -33,7 +33,7 @@ public class CustomerController {
 	@RequestMapping(value = "/updateCustomerDetails")
 	public String updateCustomer(ModelMap model, HttpServletRequest request){	
 		System.out.println("in update product method");
-		CustomerBean customerBean = RequestUtil.setCustomerRequestToBean(request);	
+		CustomerBean customerBean = RequestUtil.setCustomerRequestToBean(request,"update");	
 		System.out.println("Customer Bean :" +customerBean);
 		customerService.editCustomer(customerBean);
 		//List<CustomerBean> customerBeans = customerService.getCustomers();        

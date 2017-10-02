@@ -6,17 +6,13 @@ public class CustomerBean {
 
 	private String customerName;
 	
-	private String provisionID;
+	private String customerGstIn;
 
 	private String customerAddress;
 
 	private String customerPhone;
 
 	private String customerEmailId;
-
-	private String customerPaymentMode;
-
-	private String customerCompanyName;
 
 	public Long getCustomerId() {
 		return customerId;
@@ -28,12 +24,12 @@ public class CustomerBean {
 	
 	// provision ID Number getter and setter
 	
-		public String getProvisionID() {
-			return provisionID;
+		public String getcustomerGstIn() {
+			return customerGstIn;
 		}
 
-		public void setProvisionID(String provisionID) {
-			this.provisionID = provisionID;
+		public void setcustomerGstIn(String customerGstIn) {
+			this.customerGstIn = customerGstIn;
 		}
 
 
@@ -69,28 +65,11 @@ public class CustomerBean {
 		this.customerEmailId = customerEmailId;
 	}
 
-	public String getCustomerPaymentMode() {
-		return customerPaymentMode;
-	}
-
-	public void setCustomerPaymentMode(String customerPaymentMode) {
-		this.customerPaymentMode = customerPaymentMode;
-	}
-
-	public String getCustomerCompanyName() {
-		return customerCompanyName;
-	}
-
-	public void setCustomerCompanyName(String customerCompanyName) {
-		this.customerCompanyName = customerCompanyName;
-	}
-
 	@Override
 	public String toString() {
-		return "CustomerBean [customerId=" + customerId + ", customerName=" + customerName + ", provisionID="
-				+ provisionID + ", customerAddress=" + customerAddress + ", customerPhone=" + customerPhone
-				+ ", customerEmailId=" + customerEmailId + ", customerPaymentMode=" + customerPaymentMode
-				+ ", customerCompanyName=" + customerCompanyName + "]";
+		return "CustomerBean [customerId=" + customerId + ", customerName=" + customerName + ", customerGstIn="
+				+ customerGstIn + ", customerAddress=" + customerAddress + ", customerPhone=" + customerPhone
+				+ ", customerEmailId=" + customerEmailId + "]";
 	}
 
 	

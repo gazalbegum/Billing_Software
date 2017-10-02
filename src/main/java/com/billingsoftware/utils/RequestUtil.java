@@ -1,6 +1,5 @@
 package com.billingsoftware.utils;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,25 +32,26 @@ public class RequestUtil {
 		return productBean;
 	}
 
-	public static CustomerBean setCustomerRequestToBean(HttpServletRequest request) {
+	public static CustomerBean setCustomerRequestToBean(HttpServletRequest request, String action) {
 		// TODO Auto-generated method stub
 		
 		CustomerBean customerBean = new CustomerBean();
 		
+		if("update".equalsIgnoreCase(action)){
+			String customerId = request.getParameter("customer_id");
+			customerBean.setCustomerId(Long.valueOf(customerId));
+		}
+		
 		String customerName = request.getParameter("customer_name");
-		String provisionID = request.getParameter("customer_provisional_id");
+		String customerGstIn = request.getParameter("customer_gst_in");
 		String customerAddress = request.getParameter("customer_address");
 		String customerPhone = request.getParameter("customer_phone");
 		String customerEmailId = request.getParameter("customer_email_id");
-		String customerPaymentMode = request.getParameter("customer_payment_mode");
-		String customerCompanyName = request.getParameter("customer_company_name");		
-	
+		
 		customerBean.setCustomerAddress(customerAddress);
-		customerBean.setCustomerCompanyName(customerCompanyName);
 		customerBean.setCustomerEmailId(customerEmailId);
 		customerBean.setCustomerName(customerName);
-		customerBean.setProvisionID(provisionID);
-		customerBean.setCustomerPaymentMode(customerPaymentMode);
+		customerBean.setcustomerGstIn(customerGstIn);
 		customerBean.setCustomerPhone(customerPhone);
 		
 		return customerBean;
@@ -73,8 +73,15 @@ public class RequestUtil {
 		String productQuantity = request.getParameter("product_quantity");
 		String netPrice = request.getParameter("net_price");
 		String orderDate = request.getParameter("order_date");
-		System.out.println("orderDate" +orderDate);
-		System.out.println("customer id : " +customerId);
+		String customerPaymentMode = request.getParameter("customer_payment_mode");
+		
+		// new fields added
+		
+		String challanNumber = request.getParameter("challan_number");
+		String purchaseOrder = request.getParameter("purchase_order");
+		
+		System.out.println("challanNumber" +challanNumber);
+		System.out.println("purchaseOrder : " +purchaseOrder);
 		
 		//String productId = productName;
 		invoiceBean.setCustomerId(Long.parseLong(customerId));
@@ -87,6 +94,9 @@ public class RequestUtil {
 		invoiceBean.setProductQuantity(Integer.parseInt(productQuantity));
 		invoiceBean.setProductRate(netPrice);		
 		invoiceBean.setOrderDate(CommonUtils.convertToFormatDDMMYYYY(orderDate));
+		invoiceBean.setCustomerPaymentMode(customerPaymentMode);
+		invoiceBean.setChallanNumber(challanNumber);
+		invoiceBean.setPurchaseOrder(purchaseOrder);
 		
 		invoiceBeanList.add(invoiceBean);
 		
@@ -116,6 +126,7 @@ public class RequestUtil {
 		//String customerId = request.getParameter("customer_id");
 		String productName = request.getParameter("product_name");
 		String productHsnBac = request.getParameter("hsn_bac");
+		String customerPaymentMode = request.getParameter("customer_payment_mode");
 		//String priceAfterGST = request.getParameter("price_after_gst");
 		String productSGST = request.getParameter("product_sgst");
 		String productCGST = request.getParameter("product_cgst");
@@ -124,6 +135,9 @@ public class RequestUtil {
 		String netPrice = request.getParameter("product_rate");
 		//String orderDate = request.getParameter("order_date");
 		String invoiceId = request.getParameter("invoice_id");
+		String challanNumber = request.getParameter("challan_number");
+		String purchaseOrder = request.getParameter("purchase_order");
+		
 		
 		//invoiceBean.setCustomerId(Long.parseLong(customerId));
 		invoiceBean.setHsnBac(productHsnBac);
@@ -134,9 +148,15 @@ public class RequestUtil {
 		invoiceBean.setProductPrice(unitPrice);
 		invoiceBean.setProductQuantity(Integer.parseInt(productQuantity));
 		invoiceBean.setProductRate(netPrice);	
+		invoiceBean.setCustomerPaymentMode(customerPaymentMode);
+		
+		// new fields added
+		invoiceBean.setChallanNumber(challanNumber);
+		invoiceBean.setPurchaseOrder(purchaseOrder);
+		
 		invoiceBean.setInvoiceId(Long.parseLong(invoiceId));
 		//invoiceBean.setOrderDate(orderDate);
-		
+		System.out.println("Update invoice bean :" +invoiceBean);
 		return invoiceBean;
 	}
 

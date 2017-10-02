@@ -7,7 +7,10 @@ com\billingsoftware\serviceimpl\ProductBillingServiceImpl.class
 com\billingsoftware\entities\Invoice.class
 com\billingsoftware\utils\BeanUtil.class
 com\billingsoftware\utils\HibernateUtil.class
+com\billingsoftware\beans\BillingHistoryBean.class
 com\billingsoftware\entities\Product.class
+com\billingsoftware\helpers\EnglishNumberToWords.class
+com\billingsoftware\helpers\YourNumberMyWord.class
 com\billingsoftware\beans\ProductBean.class
 com\billingsoftware\controller\BillingInvoiceController.class
 com\billingsoftware\utils\CommonUtils.class
@@ -15,11 +18,14 @@ com\billingsoftware\beans\LoginBean.class
 com\billingsoftware\helpers\ServiceHelper.class
 com\billingsoftware\beans\FinalInvoiceBean.class
 com\billingsoftware\daoimpl\ProductBillingDaoImpl.class
+com\billingsoftware\beans\TestBackup.class
 com\billingsoftware\controller\CustomerController.class
 com\billingsoftware\dao\ProductBillingDao.class
 com\billingsoftware\daoimpl\ProductDaoImpl.class
 com\billingsoftware\beans\CustomerBean.class
 com\billingsoftware\service\CustomerService.class
+com\billingsoftware\controller\BillingInvoiceController$1.class
+com\billingsoftware\beans\ProductBeanDuplicate.class
 com\billingsoftware\controller\ProductController.class
 com\billingsoftware\service\ProductBillingService.class
 com\billingsoftware\controller\LoginController.class

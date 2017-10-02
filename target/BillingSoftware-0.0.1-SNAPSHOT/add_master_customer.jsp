@@ -41,13 +41,13 @@
 		                }
 		            },
 		            
-		            customer_provisional_id: {
+		            customer_gst_in: {
 		                validators: {
 		                        stringLength: {
 		                        min: 2,
 		                    },
 		                        notEmpty: {
-		                        message: 'Add Provision Number'
+		                        message: 'Add Customer GST'
 		                    }
 		                }
 		            },
@@ -81,16 +81,6 @@
 		                    },
 		                    notEmpty: {
 		                        message: 'Add Customer Address'
-		                    }
-		                }
-		            },
-		            customer_payment_mode: {
-		                validators: {
-		                     stringLength: {
-		                        min: 4,
-		                    },
-		                    notEmpty: {
-		                        message: 'Add payment mode'
 		                    }
 		                }
 		            },
@@ -202,11 +192,11 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Provision Number</label>  
+  <label class="col-md-4 control-label">Customer GST</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
-  <input  name="customer_provisional_id" id="customer_provisional_id" placeholder="Provision Number" class="form-control"  type="text">
+  <input  name="customer_gst_in" id="customer_gst_in" placeholder="Customer GST" class="form-control"  type="text">
     </div>
   </div>
 </div>
@@ -248,28 +238,6 @@
   </div>
 </div>
 
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Payment Mode</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-  <input name="customer_payment_mode" placeholder="Payment Mode" class="form-control"  type="text">
-    </div>
-</div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label">Company Name</label>  
-   <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-  <input name="customer_company_name" placeholder="Company Name" class="form-control" type="text">
-    </div>
-  </div>
-</div>
 
 <!-- Success message -->
 <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Customer details submitted successfully!</div>

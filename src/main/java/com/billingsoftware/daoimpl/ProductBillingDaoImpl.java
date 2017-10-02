@@ -46,40 +46,40 @@ public class ProductBillingDaoImpl implements ProductBillingDao{
 		Session session = sessionFactory.openSession();
 		System.out.println("ENTITY INVOICE :" +invoice);
 		
-		String hql = "update Invoice set productName = :product_name, hsnBac = :hsn_bac,productPrice = :product_price ,productSGST = :product_sgst ,productCGST = :product_cgst ,productQuantity = :product_quantity ,productRate = :product_rate where invoiceId = :invoice_id";
+		String hql = "update Invoice set productName = :product_name, hsnBac = :hsn_bac,customerPaymentMode = :customer_payment_mode,productPrice = :product_price ,"
+				+ "productSGST = :product_sgst ,productCGST = :product_cgst ,productQuantity = :product_quantity ,productRate = :product_rate ,challanNumber = :challan_number, purchaseOrder = :purchase_order " 
+				+ "where invoiceId = :invoice_id";
 		 
 		Query query = session.createQuery(hql);
 		query.setParameter("product_name", invoice.getProductName());
 		query.setParameter("hsn_bac", invoice.getHsnBac());
+		query.setParameter("customer_payment_mode", invoice.getCustomerPaymentMode());
 		query.setParameter("product_price", invoice.getProductPrice());
 		query.setParameter("product_sgst", invoice.getProductSGST());
 		query.setParameter("product_cgst", invoice.getProductCGST());
 		query.setParameter("product_quantity", invoice.getProductQuantity());
 		query.setParameter("product_rate", invoice.getProductRate());
+		query.setParameter("challan_number", invoice.getChallanNumber());
+		query.setParameter("purchase_order", invoice.getPurchaseOrder());
 		query.setParameter("invoice_id", invoice.getInvoiceId());
 		 
 		int rowsAffected = query.executeUpdate();
 		if (rowsAffected > 0) {
 		    System.out.println("Updated " + rowsAffected + " rows.");
 		}
-		
-	}
+		}
 
 	@Override
 	public void deleteProduct(String invoiceId) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
-		
-		String hql = "delete from Invoice where invoiceId = :invoice_id";
-		Query query = session.createQuery(hql);
-		Long invoiceIdLong = Long.parseLong(invoiceId);
-		query.setParameter("invoice_id", invoiceIdLong);
-		
-		int rowsAffected = query.executeUpdate();
-		
-		if (rowsAffected > 0) {
-		    System.out.println("Deleted " + rowsAffected + " rows.");
+	    System.out.println("DAO invoiceId :" +invoiceId);
+		Invoice invoice = (Invoice) session.load(Invoice.class, new Long(invoiceId));
+		if(null != invoice){
+			session.delete(invoice);
 		}
+		session.flush();
+		System.out.println("product deleted successfully");
 	}
 
 	@Override

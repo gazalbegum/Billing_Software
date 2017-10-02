@@ -37,7 +37,7 @@
 		                        min: 2,
 		                    },
 		                        notEmpty: {
-		                        message: 'Please supply your customer name'
+		                        message: 'Please supply user name'
 		                    }
 		                }
 		            },
@@ -47,7 +47,7 @@
 	                        min: 2,
 	                    },
 	                        notEmpty: {
-	                        message: 'Please supply your customer name'
+	                        message: 'Please supply password'
 	                    }
 	                }
 		            },	            

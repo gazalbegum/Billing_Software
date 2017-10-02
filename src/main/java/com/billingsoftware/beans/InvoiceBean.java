@@ -1,5 +1,6 @@
 package com.billingsoftware.beans;
 
+
 public class InvoiceBean {
 
 	private Long invoiceId;
@@ -24,6 +25,8 @@ public class InvoiceBean {
 
 	private String orderDate;
 	
+	private String customerPaymentMode;
+	
 	
 	// variables added to display calculated values
 	
@@ -32,6 +35,13 @@ public class InvoiceBean {
 	private String priceAfterSGST;
 	
 	private String priceAfterCGST;
+	
+	
+	// new fields added
+	
+	private String challanNumber;
+	
+	private String purchaseOrder;
 
 	public Long getInvoiceId() {
 		return invoiceId;
@@ -145,4 +155,40 @@ public class InvoiceBean {
 		this.priceAfterCGST = priceAfterCGST;
 	}
 
+	public String getCustomerPaymentMode() {
+		return customerPaymentMode;
+	}
+
+	public void setCustomerPaymentMode(String customerPaymentMode) {
+		this.customerPaymentMode = customerPaymentMode;
+	}
+
+	public String getChallanNumber() {
+		return challanNumber;
+	}
+
+	public void setChallanNumber(String challanNumber) {
+		this.challanNumber = challanNumber;
+	}
+
+	public String getPurchaseOrder() {
+		return purchaseOrder;
+	}
+
+	public void setPurchaseOrder(String purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
+	}
+
+	@Override
+	public String toString() {
+		return "InvoiceBean [invoiceId=" + invoiceId + ", customerId=" + customerId + ", productName=" + productName
+				+ ", hsnBac=" + hsnBac + ", productPrice=" + productPrice + ", productSGST=" + productSGST
+				+ ", productCGST=" + productCGST + ", productQuantity=" + productQuantity + ", productRate="
+				+ productRate + ", invoiceNumber=" + invoiceNumber + ", orderDate=" + orderDate
+				+ ", customerPaymentMode=" + customerPaymentMode + ", totalPrice=" + totalPrice + ", priceAfterSGST="
+				+ priceAfterSGST + ", priceAfterCGST=" + priceAfterCGST + ", challanNumber=" + challanNumber
+				+ ", purchaseOrder=" + purchaseOrder + "]";
+	}
+	
+	
 }

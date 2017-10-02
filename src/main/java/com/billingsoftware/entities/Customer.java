@@ -19,8 +19,8 @@ public class Customer {
 	@Column(name = "customer_name")
 	private String customerName;
 	
-	@Column(name = "customer_provisional_id")
-	private String provisionID;
+	@Column(name = "customer_gst_in")
+	private String customerGstIn;
 
 	@Column(name = "customer_address")
 	private String customerAddress;
@@ -31,11 +31,6 @@ public class Customer {
 	@Column(name = "customer_email_id")
 	private String customerEmailId;
 
-	@Column(name = "customer_payment_mode")
-	private String customerPaymentMode;
-
-	@Column(name = "customer_company_name")
-	private String customerCompanyName;
 	
 	public Long getCustomerId() {
 		return customerId;
@@ -55,12 +50,12 @@ public class Customer {
 	
 	// getter Setter for Provision ID
 	
-	public String getProvisionID() {
-		return provisionID;
+	public String getcustomerGstIn() {
+		return customerGstIn;
 	}
 
-	public void setProvisionID(String provisionID) {
-		this.provisionID = provisionID;
+	public void setcustomerGstIn(String customerGstIn) {
+		this.customerGstIn = customerGstIn;
 	}
 //--------------------
 
@@ -89,29 +84,13 @@ public class Customer {
 		this.customerEmailId = customerEmailId;
 	}
 
-	public String getCustomerPaymentMode() {
-		return customerPaymentMode;
-	}
-
-	public void setCustomerPaymentMode(String customerPaymentMode) {
-		this.customerPaymentMode = customerPaymentMode;
-	}
-
-	public String getCustomerCompanyName() {
-		return customerCompanyName;
-	}
-
-	public void setCustomerCompanyName(String customerCompanyName) {
-		this.customerCompanyName = customerCompanyName;
-	}
-
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", provisionID=" + provisionID
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerGstIn=" + customerGstIn
 				+ ", customerAddress=" + customerAddress + ", customerPhone=" + customerPhone + ", customerEmailId="
-				+ customerEmailId + ", customerPaymentMode=" + customerPaymentMode + ", customerCompanyName="
-				+ customerCompanyName + "]";
+				+ customerEmailId + "]";
 	}
+
 	
 	
 

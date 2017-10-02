@@ -81,7 +81,9 @@ li.dropdown:hover > .dropdown-menu {
             <li><a href="${pageContext.request.contextPath}/getProducts">Edit/Delete Product</a></li>         
           </ul>
         </li>
-        <li><a href="${pageContext.request.contextPath}/getBillingHistory">Billing History</a></li>
+        <li><a href="${pageContext.request.contextPath}/getBillingHistory">Billing History</a></li>        
+        
+        <!-- <li><a href="${pageContext.request.contextPath}/src/main/resources/UserManualBillingSoft.pdf" target="_new">Help</a></li> -->
         
         <li class="nav navbar-nav navbar-right"><a href="${pageContext.request.contextPath}/login.jsp">Logout</a></li>
       </ul>
