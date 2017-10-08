@@ -24,6 +24,10 @@ public class FinalInvoiceBean {
 	private String challanNumber;
 	
 	private String purchaseOrder;
+	
+	private String purchaseDate;
+	
+	private String challanDate;
 
 	public String getInvoiceNumber() {
 		return invoiceNumber;
@@ -111,6 +115,22 @@ public class FinalInvoiceBean {
 
 	public void setPurchaseOrder(String purchaseOrder) {
 		this.purchaseOrder = purchaseOrder;
+	}
+
+	public String getPurchaseDate() {
+		return purchaseDate;
+	}
+
+	public void setPurchaseDate(String purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
+	public String getChallanDate() {
+		return challanDate;
+	}
+
+	public void setChallanDate(String challanDate) {
+		this.challanDate = challanDate;
 	}		
 	
 	

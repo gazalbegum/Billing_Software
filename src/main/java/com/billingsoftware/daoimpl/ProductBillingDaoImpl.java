@@ -47,7 +47,7 @@ public class ProductBillingDaoImpl implements ProductBillingDao{
 		System.out.println("ENTITY INVOICE :" +invoice);
 		
 		String hql = "update Invoice set productName = :product_name, hsnBac = :hsn_bac,customerPaymentMode = :customer_payment_mode,productPrice = :product_price ,"
-				+ "productSGST = :product_sgst ,productCGST = :product_cgst ,productQuantity = :product_quantity ,productRate = :product_rate ,challanNumber = :challan_number, purchaseOrder = :purchase_order " 
+				+ "productSGST = :product_sgst ,productCGST = :product_cgst ,productQuantity = :product_quantity ,productRate = :product_rate ,challanNumber = :challan_number, challanDate = :challan_date, purchaseOrder = :purchase_order, purchaseDate = :purchase_date " 
 				+ "where invoiceId = :invoice_id";
 		 
 		Query query = session.createQuery(hql);
@@ -60,7 +60,9 @@ public class ProductBillingDaoImpl implements ProductBillingDao{
 		query.setParameter("product_quantity", invoice.getProductQuantity());
 		query.setParameter("product_rate", invoice.getProductRate());
 		query.setParameter("challan_number", invoice.getChallanNumber());
+		query.setParameter("challan_date", invoice.getChallanDate());
 		query.setParameter("purchase_order", invoice.getPurchaseOrder());
+		query.setParameter("purchase_date", invoice.getPurchaseDate());
 		query.setParameter("invoice_id", invoice.getInvoiceId());
 		 
 		int rowsAffected = query.executeUpdate();

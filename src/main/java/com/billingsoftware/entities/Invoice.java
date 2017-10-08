@@ -54,6 +54,13 @@ public class Invoice {
 	
 	@Column(name = "purchase_order")
 	private String purchaseOrder;
+	
+	@Column(name = "purchase_date")
+	private String purchaseDate;
+	
+	@Column(name = "challan_date")
+	private String challanDate;
+	
 
 	public Invoice() {
 
@@ -169,6 +176,22 @@ public class Invoice {
 
 	public void setPurchaseOrder(String purchaseOrder) {
 		this.purchaseOrder = purchaseOrder;
+	}
+
+	public String getPurchaseDate() {
+		return purchaseDate;
+	}
+
+	public void setPurchaseDate(String purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
+	public String getChallanDate() {
+		return challanDate;
+	}
+
+	public void setChallanDate(String challanDate) {
+		this.challanDate = challanDate;
 	}
 	
 	

@@ -116,10 +116,12 @@
 	'${list.productName}', '${list.hsnBac}', '${list.productPrice}',
 			'${list.productGst}', '${list.priceAfterGst}',
 			'${list.productQuantity}', '${list.productRate}'
-	function editFunction(invoice_id, purchaseOrder, challanNumber, productName, hsnBac, productPrice, customerPaymentMode,
+	function editFunction(invoice_id, purchaseOrder, purchaseDate, challanNumber, challanDate, productName, hsnBac, productPrice, customerPaymentMode,
 			productSGST, productCGST, productQuantity, productRate) {
 				$('#purchase_order').val(purchaseOrder);
 				$('#challan_number').val(challanNumber);
+				$('#purchase_date').val(purchaseDate);
+				$('#challan_date').val(challanDate);
 		$('#product_name').val(productName);
 		$('#hsn_bac').val(hsnBac);
 		$('#customer_payment_mode').val(customerPaymentMode);
@@ -247,7 +249,9 @@
                    
                    <th><input type="checkbox" id="checkall" /></th>
                    <th>Purchase Order</th>
+                   <th>Purchase Date</th>                   
                    <th>Challan No.</th>
+                   <th>Challan Date</th>
                    <th>Product Name</th>
                    <th>HSN / BAC</th>
                    <th>Unit Price</th>
@@ -268,7 +272,9 @@
      <tr>
          <td><input type="checkbox" class="checkthis" /></td>
          <td>${list.purchaseOrder}</td>
+         <td>${list.purchaseDate}</td>
          <td>${list.challanNumber}</td>
+         <td>${list.challanDate}</td>
          <td>${list.productName}</td>
          <td>${list.hsnBac}</td>
          <td>${list.productPrice}</td>   
@@ -280,7 +286,7 @@
          <td>${list.productSGST}%</td>
          <td>${list.priceAfterSGST}</td>            
          <td>${list.productRate}</td>
- 		 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick="editFunction('${list.invoiceId}','${list.purchaseOrder}','${list.challanNumber}','${list.productName}','${list.hsnBac}','${list.productPrice}','${list.customerPaymentMode}','${list.productSGST}', '${list.productCGST}','${list.productQuantity}','${list.productRate}')"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+ 		 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick="editFunction('${list.invoiceId}','${list.purchaseOrder}','${list.purchaseDate}','${list.challanNumber}','${list.challanDate}','${list.productName}','${list.hsnBac}','${list.productPrice}','${list.customerPaymentMode}','${list.productSGST}', '${list.productCGST}','${list.productQuantity}','${list.productRate}')"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
          <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash" onclick="deletefunctionTest('${list.invoiceId}')"></span></button></p></td>     </tr>
     </c:forEach>
      
@@ -323,11 +329,21 @@
 						<div class="form-group">    
 						     <label>Purchase Order</label>   
        						 <input class="form-control " id = "purchase_order"	name="purchase_order" type="text" >
+                        </div>	
+                        
+                        <div class="form-group">    
+						     <label>Purchase Date</label>   
+       						 <input class="form-control " id = "purchase_date"	name="purchase_date" type="text" >
                         </div>							
                         
                         <div class="form-group">    
 						     <label>Challan Number</label>   
        						 <input class="form-control " id = "challan_number"	name="challan_number" type="text" >
+                        </div>	
+                        
+                        <div class="form-group">    
+						     <label>Challan Date</label>   
+       						 <input class="form-control " id = "challan_date"	name="challan_date" type="text" >
                         </div>							
                         
 						

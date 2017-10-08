@@ -38,6 +38,8 @@ public class BeanUtil {
             // added 2 new fields
             invoiceBean.setChallanNumber(tempInvoice.getChallanNumber());
             invoiceBean.setPurchaseOrder(tempInvoice.getPurchaseOrder());
+            invoiceBean.setPurchaseDate(tempInvoice.getPurchaseDate());
+            invoiceBean.setChallanDate(tempInvoice.getChallanDate());
             
             invoiceBean.setOrderDate(tempInvoice.getOrderDate());
             invoiceBean.setCustomerPaymentMode(tempInvoice.getCustomerPaymentMode());
@@ -117,6 +119,9 @@ public class BeanUtil {
 		invoice.setChallanNumber(invoiceBean.getChallanNumber());
 		invoice.setPurchaseOrder(invoiceBean.getPurchaseOrder());
 		invoice.setInvoiceNumber(invoiceBean.getInvoiceNumber());
+		invoice.setChallanDate(invoiceBean.getChallanDate());
+		invoice.setPurchaseDate(invoiceBean.getPurchaseDate());
+		
 		return invoice;
 	}
 
@@ -161,6 +166,8 @@ public class BeanUtil {
 		    // added 2 new fields 
 		    invoice.setChallanNumber(tempInvoiceBean.getChallanNumber());
 		    invoice.setPurchaseOrder(tempInvoiceBean.getPurchaseOrder());
+		    invoice.setPurchaseDate(tempInvoiceBean.getPurchaseDate());
+		    invoice.setChallanDate(tempInvoiceBean.getChallanDate());
 		    
 		    invoices.add(invoice);
 		    

@@ -79,6 +79,9 @@ public class RequestUtil {
 		
 		String challanNumber = request.getParameter("challan_number");
 		String purchaseOrder = request.getParameter("purchase_order");
+		String purchaseDate = request.getParameter("purchase_date");
+		String challanDate = request.getParameter("challan_date");
+		
 		
 		System.out.println("challanNumber" +challanNumber);
 		System.out.println("purchaseOrder : " +purchaseOrder);
@@ -97,6 +100,8 @@ public class RequestUtil {
 		invoiceBean.setCustomerPaymentMode(customerPaymentMode);
 		invoiceBean.setChallanNumber(challanNumber);
 		invoiceBean.setPurchaseOrder(purchaseOrder);
+		invoiceBean.setPurchaseDate(purchaseDate);
+		invoiceBean.setChallanDate(challanDate);
 		
 		invoiceBeanList.add(invoiceBean);
 		
@@ -137,6 +142,8 @@ public class RequestUtil {
 		String invoiceId = request.getParameter("invoice_id");
 		String challanNumber = request.getParameter("challan_number");
 		String purchaseOrder = request.getParameter("purchase_order");
+		String purchaseDate = request.getParameter("purchase_date");
+		String challanDate = request.getParameter("challan_date");
 		
 		
 		//invoiceBean.setCustomerId(Long.parseLong(customerId));
@@ -153,6 +160,8 @@ public class RequestUtil {
 		// new fields added
 		invoiceBean.setChallanNumber(challanNumber);
 		invoiceBean.setPurchaseOrder(purchaseOrder);
+		invoiceBean.setPurchaseDate(purchaseDate);
+		invoiceBean.setChallanDate(challanDate);
 		
 		invoiceBean.setInvoiceId(Long.parseLong(invoiceId));
 		//invoiceBean.setOrderDate(orderDate);

@@ -169,7 +169,7 @@
 		            
 		           // $('#billing_form').find('#product_name', '#product_hsn_bac','#product_cgst','#product_sgst', '#product_quantity','#unit_price','#net_price').val('');
 		            
-		           $('#billing_form').find('input, select').not("#order_date,#customer_payment_mode,#customer_id,#purchase_order,#challan_number").val('');
+		           $('#billing_form').find('input, select').not("#order_date,#customer_payment_mode,#customer_id,#purchase_order,#challan_number,#purchase_date,#challan_date").val('');
 		            console.log("reset done");
 		        });
 		});
@@ -416,11 +416,35 @@ $(document).ready(function(){
 <!-- Text input-->
 
 <div class="form-group">
+  <label class="col-md-4 control-label">Purchase Date</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+  <input name="purchase_date" id="purchase_date" placeholder="Purchase Date" class="form-control"  type="text">
+    </div>
+</div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
   <label class="col-md-4 control-label">Challan No.</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
   <input name="challan_number" id="challan_number" placeholder="Challan No." class="form-control"  type="text">
+    </div>
+</div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Challan Date</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+  <input name="challan_date" id="challan_date" placeholder="Challan Date" class="form-control"  type="text">
     </div>
 </div>
 </div>

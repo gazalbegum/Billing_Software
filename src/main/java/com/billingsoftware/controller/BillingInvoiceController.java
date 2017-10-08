@@ -104,8 +104,10 @@ public class BillingInvoiceController {
 	
 	@RequestMapping(value = "/updateProductForBilling")
 	public String updateProduct(ModelMap model, HttpServletRequest request){	
-		System.out.println("in update product method");
-		InvoiceBean invoiceBean = RequestUtil.setUpdateInvoiceRequestToBean(request);		
+		
+		InvoiceBean invoiceBean = RequestUtil.setUpdateInvoiceRequestToBean(request);	
+		
+		System.out.println("UPDATE INVOICE BEAN :" +invoiceBean);
 		productBillingService.editProduct(invoiceBean);		
 		return "verify_product";
 	}

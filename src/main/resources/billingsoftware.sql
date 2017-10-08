@@ -65,3 +65,9 @@ alter table invoice add column purchase_order int;
 alter table customers drop column customer_company_name;
 
 ALTER TABLE `customers` CHANGE COLUMN `customer_provisional_id` `customer_gst_in` VARCHAR(255);
+
+// new columns added
+
+alter table invoice add column purchase_date varchar(15);
+
+alter table invoice add column challan_date varchar(15);

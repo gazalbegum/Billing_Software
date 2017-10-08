@@ -205,7 +205,6 @@
                    <th>Address</th>
                    <th>Phone</th>
                    <th>Email</th>
-                   <th>Company Name</th>
                    <th>Edit</th>                      
                    <th>Delete</th>
                    </thead>

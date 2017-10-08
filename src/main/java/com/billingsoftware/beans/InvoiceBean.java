@@ -42,6 +42,10 @@ public class InvoiceBean {
 	private String challanNumber;
 	
 	private String purchaseOrder;
+	
+	private String purchaseDate;
+	
+	private String challanDate;
 
 	public Long getInvoiceId() {
 		return invoiceId;
@@ -178,6 +182,22 @@ public class InvoiceBean {
 	public void setPurchaseOrder(String purchaseOrder) {
 		this.purchaseOrder = purchaseOrder;
 	}
+	
+	public String getPurchaseDate() {
+		return purchaseDate;
+	}
+
+	public void setPurchaseDate(String purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
+	public String getChallanDate() {
+		return challanDate;
+	}
+
+	public void setChallanDate(String challanDate) {
+		this.challanDate = challanDate;
+	}
 
 	@Override
 	public String toString() {
@@ -187,8 +207,11 @@ public class InvoiceBean {
 				+ productRate + ", invoiceNumber=" + invoiceNumber + ", orderDate=" + orderDate
 				+ ", customerPaymentMode=" + customerPaymentMode + ", totalPrice=" + totalPrice + ", priceAfterSGST="
 				+ priceAfterSGST + ", priceAfterCGST=" + priceAfterCGST + ", challanNumber=" + challanNumber
-				+ ", purchaseOrder=" + purchaseOrder + "]";
+				+ ", purchaseOrder=" + purchaseOrder + ", purchaseDate=" + purchaseDate + ", challanDate="
+				+ challanDate + "]";
 	}
+
+	
 	
 	
 }

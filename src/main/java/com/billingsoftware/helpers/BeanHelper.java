@@ -33,6 +33,8 @@ public class BeanHelper {
         String customerPaymentMode = "";
         String challanNumber = "";
         String purchaseOrder = "";
+        String challanDate = "";
+        String purchaseDate = "";
 		
 		double sgstCounter = 0.0;
 		double cgstCounter = 0.0;
@@ -46,6 +48,8 @@ public class BeanHelper {
 			orderDate = tempInvoiceBean.getOrderDate() == null ? "" : tempInvoiceBean.getOrderDate().toString();
 			challanNumber = tempInvoiceBean.getChallanNumber();
 			purchaseOrder = tempInvoiceBean.getPurchaseOrder();
+			challanDate = tempInvoiceBean.getChallanDate();
+			purchaseDate = tempInvoiceBean.getPurchaseDate();
 			break;
 		}
 		
@@ -79,6 +83,9 @@ public class BeanHelper {
         
         finalInvoiceBean.setChallanNumber(challanNumber);
         finalInvoiceBean.setPurchaseOrder(purchaseOrder);
+        finalInvoiceBean.setPurchaseDate(purchaseDate);
+        finalInvoiceBean.setChallanDate(challanDate);
+        
         return finalInvoiceBean;
 	
 	}
