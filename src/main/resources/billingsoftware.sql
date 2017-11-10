@@ -71,3 +71,11 @@ ALTER TABLE `customers` CHANGE COLUMN `customer_provisional_id` `customer_gst_in
 alter table invoice add column purchase_date varchar(15);
 
 alter table invoice add column challan_date varchar(15);
+
+// modify columns
+
+ALTER TABLE invoice
+MODIFY COLUMN challan_number varchar(25);
+
+ALTER TABLE invoice
+MODIFY COLUMN purchase_order varchar(25);
