@@ -131,25 +131,14 @@ public class BillingInvoiceController {
 		return productMap;
 	}
 	
-//	@RequestMapping(value = "/getBillingHistory")
-//	public String getBillingHistory(ModelMap model){
-//		
-//		String screenShot = formCollection["capturedShot"];
-//		//remove the image header details
-//		String trimmedData = screenShot.Replace("data:image/png;base64,","");
-//
-//		//convert the base 64 string image to byte array
-//		byte[] uploadedImage=Convert.FromBase64String(trimmedData);
-//
-//		//the byte array can be saved into database or on file system
-//		//saving the image on the server
-//		String fileName=Guid.NewGuid()+".png";
-//		String path=Server.MapPath("~/App_Data/"+fileName);
-//		System.IO.File.WriteAllBytes(path,uploadedImage);
-//		
-//		
-//		return null;
-//	}
+
+	@RequestMapping(value = "/jsp/deleteInvoice")
+	public String deleteInvoice(ModelMap model, HttpServletRequest request){		
+		String invoiceId = request.getParameter("name");
+		productBillingService.deleteProduct(invoiceId);			
+		return "billing_history";
+	}
+	
 	
 }
 
