@@ -72,16 +72,20 @@ public class ProductBillingDaoImpl implements ProductBillingDao{
 		}
 
 	@Override
-	public void deleteProduct(String invoiceId) {
+	public void deleteProduct(String invoiceNumber) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
-	    System.out.println("DAO invoiceId :" +invoiceId);
-		Invoice invoice = (Invoice) session.load(Invoice.class, new Long(invoiceId));
-		if(null != invoice){
-			session.delete(invoice);
+		
+		String hql = "delete from Invoice where invoiceNumber = :invoiceNumber";
+		Query query = session.createQuery(hql);
+		//Long productIdLong = Long.parseLong(productId);
+		query.setParameter("invoiceNumber", invoiceNumber);
+		
+		int rowsAffected = query.executeUpdate();
+		
+		if (rowsAffected > 0) {
+		    System.out.println("Deleted " + rowsAffected + " rows.");
 		}
-		session.flush();
-		System.out.println("product deleted successfully");
 	}
 
 	@Override

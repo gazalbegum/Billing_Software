@@ -28,6 +28,7 @@ com\billingsoftware\controller\BillingInvoiceController$1.class
 com\billingsoftware\beans\ProductBeanDuplicate.class
 com\billingsoftware\controller\ProductController.class
 com\billingsoftware\service\ProductBillingService.class
+com\billingsoftware\main\AppConfig.class
 com\billingsoftware\controller\LoginController.class
 com\billingsoftware\dao\CustomerDao.class
 com\billingsoftware\utils\RequestUtil.class

@@ -22,7 +22,43 @@
 	
 	<script>
 	$(document).ready(function() { 
-	var $rows = $('#myTable tr');
+	
+		
+		 /* delete modal submit */
+	    
+	    $('#delete-yes').click(function(event) {
+	    	console.log("delete-yes-invoiceId :" +invoiceId);
+	    	var invoiceId = $('#invoice_id_delete').val();
+	    	 $('#delete').modal('hide');
+	    	
+	    	        	
+	    		 $.ajax({
+	    	            url:'/BillingSoftware/jsp/deleteInvoice',
+	    	            data:{name:invoiceId},
+	    	            type:'post',
+	    	            cache:false,
+	    	            success:function(data){
+	    	              console.log(data); 
+	    	            },
+	    	            error:function(){
+	    	              //alert('error');
+	    	            }
+	    	         }
+	    	    );
+	    		 $('#delete_message').text("Invoice deleted successfully")
+	    		 location.reload(true);
+	    });    	
+	    
+		 
+	    $('#delete').on('hidden.bs.modal', function () {
+	    	$('#delete_message').text("Invoice deleted successfully")
+			 location.reload(true);
+			 $('#delete_message').text("Invoice deleted successfully")
+			 alert("Invoice deleted successfully");
+			})
+				
+		
+    var $rows = $('#myTable tr');
 	
 	$('#search').keyup(function() {
 		
@@ -34,6 +70,16 @@
 	    }).hide();
 	});
 	});
+	
+	
+	
+		
+		/* delete function */
+			
+			function deletefunctionTest(invoiceId){					
+				$('#invoice_id_delete').val(invoiceId);
+				console.log("invoice id :" + $('#invoice_id_delete').val());			
+			}
 	</script>
 </head>
 
@@ -84,6 +130,7 @@
                    <th>Order Date</th>
                    <th>Invoice number</th>
                    <th>Total Price</th>
+                   <th>Delete</th>
                  </thead>  
     
    <tbody>
@@ -94,6 +141,8 @@
          <td>${list.orderDate}</td>
          <td><a href="getProductsForInvoice?invoice_number=${list.invoiceNumber}" target="_blank">${list.invoiceNumber}</a></td>   
          <td>${list.totalPrice}</td>
+         <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash" onclick="deletefunctionTest('${list.invoiceNumber}')"></span></button></p></td>     </tr>
+         
      </tr>
  </c:forEach>
      </tbody>
@@ -111,6 +160,29 @@
         
 </table>
 
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+      </div>
+          <div class="modal-body">
+        <span class="color:red">${deleteMessage}</span> 
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+       <div class="form-group">       
+						     <input class="form-control " id = "invoice_id_delete"	name="invoice_id" type="hidden" >
+                        </div>
+      </div>
+        <div class="modal-footer ">
+        <button id = "delete-yes" type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>No</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
 </div>
 </div>
 </div>
